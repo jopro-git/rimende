@@ -14,6 +14,8 @@ export const CATEGORY_ICONS: Record<Category, string> = {
   "Personal Hygiene": "🪥",
   "Living Room": "🛋️",
   General: "🏠",
+  Dog: "🐶",
+  House: "🏡",
 };
 
 export const CATEGORIES: Category[] = [
@@ -23,6 +25,8 @@ export const CATEGORIES: Category[] = [
   "Personal Hygiene",
   "Living Room",
   "General",
+  "Dog",
+  "House",
 ];
 
 export function choresByCategory(category: Category): DefaultChore[] {
@@ -74,4 +78,25 @@ export const DEFAULT_CHORES: DefaultChore[] = [
   { name: "Take out recycling", category: "General", frequency: "weekly", frequency_days: 7 },
   { name: "Mop floors", category: "General", frequency: "biweekly", frequency_days: 14 },
   { name: "Wash windows", category: "General", frequency: "monthly", frequency_days: 30 },
+
+  // Dog
+  { name: "Feed dog", category: "Dog", frequency: "daily", frequency_days: 1 },
+  { name: "Walk dog", category: "Dog", frequency: "daily", frequency_days: 1 },
+  { name: "Refill water bowl", category: "Dog", frequency: "daily", frequency_days: 1 },
+  { name: "Clean food & water bowls", category: "Dog", frequency: "weekly", frequency_days: 7 },
+  { name: "Brush dog", category: "Dog", frequency: "weekly", frequency_days: 7 },
+  { name: "Bath dog", category: "Dog", frequency: "monthly", frequency_days: 30 },
+  { name: "Trim dog nails", category: "Dog", frequency: "monthly", frequency_days: 30 },
+  { name: "Flea & tick treatment", category: "Dog", frequency: "monthly", frequency_days: 30 },
+  { name: "Vet check-up", category: "Dog", frequency: "custom", frequency_days: 180 },
+
+  // House
+  { name: "Mow lawn", category: "House", frequency: "weekly", frequency_days: 7 },
+  { name: "Water plants", category: "House", frequency: "custom", frequency_days: 3 },
+  { name: "Clean porch / entrance", category: "House", frequency: "weekly", frequency_days: 7 },
+  { name: "Wash car", category: "House", frequency: "monthly", frequency_days: 30 },
+  { name: "Clean gutters", category: "House", frequency: "custom", frequency_days: 90 },
+  { name: "Check smoke alarms", category: "House", frequency: "monthly", frequency_days: 30 },
+  { name: "Check first aid kit", category: "House", frequency: "custom", frequency_days: 180 },
+  { name: "Declutter garage / storage", category: "House", frequency: "custom", frequency_days: 90 },
 ];

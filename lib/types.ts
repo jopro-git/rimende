@@ -4,7 +4,9 @@ export type Category =
   | "Bedroom"
   | "Personal Hygiene"
   | "Living Room"
-  | "General";
+  | "General"
+  | "Dog"
+  | "House";
 
 export type Frequency =
   | "daily"

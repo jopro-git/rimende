@@ -10,6 +10,8 @@ const CATEGORIES = [
   "Personal Hygiene",
   "Living Room",
   "General",
+  "Dog",
+  "House",
 ];
 
 interface AddChoreModalProps {

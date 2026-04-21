@@ -9,6 +9,8 @@ const CATEGORIES: Category[] = [
   "Personal Hygiene",
   "Living Room",
   "General",
+  "Dog",
+  "House",
 ];
 
 interface CategoryFilterProps {
