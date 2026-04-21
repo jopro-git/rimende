@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ChoreList } from "@/components/ChoreList";
 import { Header } from "@/components/Header";
 import { RealtimeChores } from "@/components/RealtimeChores";
+import { ViewSwitcher } from "@/components/ViewSwitcher";
 import type { ChoreWithInstance } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -49,11 +49,11 @@ export default async function HomePage() {
   }));
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-gray-950">
       <Header userEmail={user!.email!} />
-      <main className="mx-auto max-w-2xl px-4 py-8">
+      <main className="mx-auto max-w-3xl px-4 py-8">
         <RealtimeChores userId={user!.id} />
-        <ChoreList chores={chores} />
+        <ViewSwitcher chores={chores} />
       </main>
     </div>
   );
