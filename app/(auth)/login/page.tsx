@@ -1,6 +1,11 @@
 import { login, signup } from "./actions";
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-4">
       <div className="w-full max-w-sm space-y-8">
@@ -12,6 +17,12 @@ export default function LoginPage() {
             Your chore reminder companion
           </p>
         </div>
+
+        {error && (
+          <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 px-4 py-3 text-sm text-red-700 dark:text-red-400">
+            {error}
+          </div>
+        )}
 
         <form className="space-y-4">
           <div>
