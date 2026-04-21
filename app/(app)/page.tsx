@@ -1,7 +1,8 @@
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ChoreList } from "@/components/ChoreList";
 import { Header } from "@/components/Header";
-import { seedDefaultChores } from "@/lib/chores/seed";
+import { RealtimeChores } from "@/components/RealtimeChores";
 import type { ChoreWithInstance } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +13,13 @@ export default async function HomePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  await seedDefaultChores(user!.id);
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("onboarding_complete")
+    .eq("id", user!.id)
+    .single();
+
+  if (!profile?.onboarding_complete) redirect("/onboarding");
 
   const { data: instances } = await supabase
     .from("chore_instances")
@@ -45,6 +52,7 @@ export default async function HomePage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Header userEmail={user!.email!} />
       <main className="mx-auto max-w-2xl px-4 py-8">
+        <RealtimeChores userId={user!.id} />
         <ChoreList chores={chores} />
       </main>
     </div>

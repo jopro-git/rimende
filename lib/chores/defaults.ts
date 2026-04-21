@@ -1,10 +1,40 @@
 import type { Category, Frequency } from "@/lib/types";
 
-interface DefaultChore {
+export interface DefaultChore {
   name: string;
   category: Category;
   frequency: Frequency;
   frequency_days: number;
+}
+
+export const CATEGORY_ICONS: Record<Category, string> = {
+  Kitchen: "🍳",
+  Bathroom: "🚿",
+  Bedroom: "🛏️",
+  "Personal Hygiene": "🪥",
+  "Living Room": "🛋️",
+  General: "🏠",
+};
+
+export const CATEGORIES: Category[] = [
+  "Kitchen",
+  "Bathroom",
+  "Bedroom",
+  "Personal Hygiene",
+  "Living Room",
+  "General",
+];
+
+export function choresByCategory(category: Category): DefaultChore[] {
+  return DEFAULT_CHORES.filter((c) => c.category === category);
+}
+
+export function frequencyLabel(c: DefaultChore): string {
+  if (c.frequency === "daily") return "Daily";
+  if (c.frequency === "weekly") return "Weekly";
+  if (c.frequency === "biweekly") return "Every 2 weeks";
+  if (c.frequency === "monthly") return "Monthly";
+  return `Every ${c.frequency_days} days`;
 }
 
 export const DEFAULT_CHORES: DefaultChore[] = [
